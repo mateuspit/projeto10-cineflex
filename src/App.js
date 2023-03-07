@@ -5,6 +5,8 @@ import MainTitleMoviesList from "./components/MainTitleMoviesList";
 import SessionsTimeList from "./components/SessionsTimeList";
 import MoviesList from "./components/MoviesList";
 import MainTitleChooseTime from "./components/MainTitleChooseTime";
+import MainTitleTickets from "./components/MainTitleTickets";
+import Seats from "./components/Seats";
 
 export default function App() {
   return (
@@ -22,6 +24,11 @@ export default function App() {
         <SessionsTimeList />
         <FooterChooseTime />
       </ContainerChooseTime>
+
+      <ContainerTickets>
+        <MainTitleTickets />
+        <Seats />
+      </ContainerTickets>
 
     </Iphone11ProContainer>
   );
@@ -45,8 +52,15 @@ const ContainerMoviesList = styled.div`
 `;
 
 const ContainerChooseTime = styled.div`
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   `;
+
+const ContainerTickets = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
