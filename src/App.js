@@ -7,9 +7,12 @@ import SessionsTimeList from "./components/SessionsTimeList";
 import MoviesList from "./components/MoviesList";
 import MainTitleChooseTime from "./components/MainTitleChooseTime";
 import MainTitleTickets from "./components/MainTitleTickets";
+import MainTitleOrderDetails from "./components/MainTitleOrderDetails";
 import Seats from "./components/Seats";
+import Details from "./components/Details";
 import BuyerData from "./components/BuyerData";
 import TicketsButton from "./components/TicketsButton";
+import BackHomeButton from "./components/BackHomeButton";
 
 export default function App() {
   return (
@@ -36,6 +39,12 @@ export default function App() {
         <TicketsButton />
         <FooterTickets />
       </ContainerTickets>
+
+      <ContainerOrderDetails>
+        <MainTitleOrderDetails />
+        <Details/>
+        <BackHomeButton/>
+      </ContainerOrderDetails>
 
     </Iphone11ProContainer>
   );
@@ -66,6 +75,13 @@ const ContainerChooseTime = styled.div`
   `;
 
 const ContainerTickets = styled.div`
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const ContainerOrderDetails = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
