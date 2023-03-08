@@ -1,10 +1,23 @@
 import styled from "styled-components";
+import { BiArrowBack } from "react-icons/bi";
 
-export default function HeaderPage(){
-    return(
-        <HeaderTitle><p>CINEFLEX</p></HeaderTitle>
+export default function HeaderPage() {
+    return (
+        <>
+            <BackArrow><BiArrowBack /></BackArrow>
+            <HeaderTitle><p>CINEFLEX</p></HeaderTitle>            
+        </>
     );
 }
+
+const BackArrow = styled.div`
+    /* margin-right: 90px; */
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    cursor: pointer;
+`;
 
 const HeaderTitle = styled.header`
     width: 100vw;
