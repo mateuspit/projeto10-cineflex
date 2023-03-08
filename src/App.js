@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import HeaderPage from "./components/HeaderPage";
 import FooterChooseTime from "./components/FooterChooseTime";
+import FooterTickets from "./components/FooterTickets";
 import MainTitleMoviesList from "./components/MainTitleMoviesList";
 import SessionsTimeList from "./components/SessionsTimeList";
 import MoviesList from "./components/MoviesList";
 import MainTitleChooseTime from "./components/MainTitleChooseTime";
 import MainTitleTickets from "./components/MainTitleTickets";
 import Seats from "./components/Seats";
+import BuyerData from "./components/BuyerData";
+import TicketsButton from "./components/TicketsButton";
 
 export default function App() {
   return (
@@ -28,6 +31,9 @@ export default function App() {
       <ContainerTickets>
         <MainTitleTickets />
         <Seats />
+        <BuyerData />
+        <TicketsButton />
+        <FooterTickets />
       </ContainerTickets>
 
     </Iphone11ProContainer>

@@ -66,11 +66,97 @@ export default function Seats() {
                 <Seat>50</Seat>
             </ContainerSeats>
             <ContainerSeatsIconsStatus>
+                <Status>
+                    <PickedIcon />
+                    <StatusText>Selecionado</StatusText>
+                </Status>
 
+                <Status>
+                    <AvalaibleIcon />
+                    <StatusText>Disponível</StatusText>
+                </Status>
+
+                <Status>
+                    <UnavailableIcon />
+                    <StatusText>Indisponível</StatusText>
+                </Status>
             </ContainerSeatsIconsStatus>
         </>
     );
 }
+
+const Status = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
+const ContainerSeatsIconsStatus = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 286px;
+    margin-top: -2px;
+`;
+
+const StatusText = styled.p`
+    margin-top: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.013em;
+    color: #4E5A65;    
+`;
+
+const AvalaibleIcon = styled.button`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+    color: #000000;   
+    width: 26px;
+    height: 26px;
+    background: #C3CFD9;
+    border: 1px solid #808F9D;
+    border-radius: 12px;    
+`;
+
+const UnavailableIcon = styled.button`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+    color: #000000;   
+    width: 26px;
+    height: 26px;
+    background: #FBE192;
+    border: 1px solid #F7C52B;
+    border-radius: 17px;   
+`;
+
+const PickedIcon = styled.button`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+    color: #000000;   
+    width: 26px;
+    height: 26px;
+    background: #1AAE9E;
+    border: 1px solid #0E7D71;
+    border-radius: 17px; 
+`;
 
 const ContainerSeats = styled.div`
     width: 375px;
@@ -112,7 +198,7 @@ const SeatSelected = styled.button`
     height: 26px;
     background: #1AAE9E;
     border: 1px solid #0E7D71;
-    border-radius: 12px;
+    border-radius: 17px;
     margin-right: 7px;
     margin-bottom: 18px;
 `;
