@@ -32,6 +32,7 @@ export default function App() {
         <MainTitleTickets />
         <Seats />
         <BuyerData />
+        <BuyerData />
         <TicketsButton />
         <FooterTickets />
       </ContainerTickets>

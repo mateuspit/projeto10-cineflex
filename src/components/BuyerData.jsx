@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function BuyerData() {
     return (
         <ContainerBuyerData>
-            <Labels>Nome do comprador:</Labels>
+            <Labels>Nome do comprador: (Assento X)</Labels>
             <Input placeholder="Digite seu nome..."/>
             <Labels>CPF do comprador:</Labels>
             <Input placeholder="Digite seu CPF..."/>
