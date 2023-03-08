@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import img4 from "../assets/imgs/image 6.png"
 
-export default function FooterChooseTime() {
+export default function FooterChooseTime(props) {
     return (
         <ContainerFooter>
             <FooterMovie>
-                <img src={img4} alt={"test"} />
-                <h1>Enola Holmes</h1>
+                <img src={props.moviesSessions.posterURL} alt={props.moviesSessions.title} />
+                <h1>{props.moviesSessions.title}</h1>
             </FooterMovie>
         </ContainerFooter>
     );

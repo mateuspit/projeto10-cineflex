@@ -1,31 +1,9 @@
-import img3 from "../assets/imgs/image 3.png"
-import img4 from "../assets/imgs/image 6.png"
 import styled from "styled-components";
 
-export default function Movie(){
-    return(
+export default function Movie(props) {
+    return (
         <>
-            <MoviePoster src={img3} alt={"test"} />
-            <MoviePoster src={img4} alt={"test"} />
-            <MoviePoster src={img3} alt={"test"} />
-            <MoviePoster src={img4} alt={"test"} />
-            <MoviePoster src={img3} alt={"test"} />
-            <MoviePoster src={img4} alt={"test"} />
-            <MoviePoster src={img3} alt={"test"} />
-            <MoviePoster src={img4} alt={"test"} /> 
-            <MoviePoster src={img3} alt={"test"} />
-            <MoviePoster src={img4} alt={"test"} />
-            <MoviePoster src={img3} alt={"test"} />
-            <MoviePoster src={img4} alt={"test"} />
-            <MoviePoster src={img3} alt={"test"} />
-            <MoviePoster src={img4} alt={"test"} />
-            <MoviePoster src={img3} alt={"test"} />
-            <MoviePoster src={img4} alt={"test"} /> 
-            <MoviePoster src={img3} alt={"test"} />
-            <MoviePoster src={img4} alt={"test"} />
-            <MoviePoster src={img3} alt={"test"} />
-            <MoviePoster src={img4} alt={"test"} />
-            <MoviePoster src={img3} alt={"test"} />           
+            {props.moviesList.map((list, i) => <MoviePoster key={i} src={list.posterURL} alt={list.title} />)}
         </>
     );
 }

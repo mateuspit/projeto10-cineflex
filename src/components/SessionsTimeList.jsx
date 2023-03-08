@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import SessionTime from "./SessionTime";
 
-export default function SessionsTimeList() {
+export default function SessionsTimeList(props) {
+
     return (
         <ContainerSessionsTime>
-            <SessionTime />
+            <SessionTime moviesSessions={props.moviesSessions}/>
         </ContainerSessionsTime>
     );
+
 }
 
 const ContainerSessionsTime = styled.div`

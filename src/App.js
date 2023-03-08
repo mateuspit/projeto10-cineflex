@@ -1,50 +1,39 @@
 import styled from "styled-components";
 import HeaderPage from "./components/HeaderPage";
-import FooterChooseTime from "./components/FooterChooseTime";
-import FooterTickets from "./components/FooterTickets";
-import MainTitleMoviesList from "./components/MainTitleMoviesList";
-import SessionsTimeList from "./components/SessionsTimeList";
-import MoviesList from "./components/MoviesList";
-import MainTitleChooseTime from "./components/MainTitleChooseTime";
-import MainTitleTickets from "./components/MainTitleTickets";
-import MainTitleOrderDetails from "./components/MainTitleOrderDetails";
-import Seats from "./components/Seats";
-import Details from "./components/Details";
-import BuyerData from "./components/BuyerData";
-import TicketsButton from "./components/TicketsButton";
-import BackHomeButton from "./components/BackHomeButton";
+import MoviesListPage from "./components/MoviesListPage"
+import ChooseTimePage from "./components/ChooseTimePage"
+import TicketsPage from "./components/TicketsPage"
+import OrderDetailsPage from "./components/OrderDetailsPage"
+import React from "react";
+import axios from "axios";
 
 export default function App() {
+    let [moviesList, setMoviesList] = React.useState([]);
+
+    const urlMovies = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
+    
+    React.useEffect(() => {
+		const promise = axios.get(urlMovies);   
+
+		promise.then(response => {
+            moviesList = response.data;
+			setMoviesList(moviesList);
+			// console.log(moviesList[0].title);
+		});
+	}, []);
+
   return (
     <Iphone11ProContainer>
 
       <HeaderPage />
 
-      <ContainerMoviesList>
-        <MainTitleMoviesList />
-        <MoviesList />
-      </ContainerMoviesList>
+      <MoviesListPage moviesList={moviesList}/>
 
-      <ContainerChooseTime >
-        <MainTitleChooseTime />
-        <SessionsTimeList />
-        <FooterChooseTime />
-      </ContainerChooseTime>
+      <ChooseTimePage />
+      
+      <TicketsPage />
 
-      <ContainerTickets>
-        <MainTitleTickets />
-        <Seats />
-        <BuyerData />
-        <BuyerData />
-        <TicketsButton />
-        <FooterTickets />
-      </ContainerTickets>
-
-      <ContainerOrderDetails>
-        <MainTitleOrderDetails />
-        <Details/>
-        <BackHomeButton/>
-      </ContainerOrderDetails>
+      <OrderDetailsPage />
 
     </Iphone11ProContainer>
   );
@@ -58,32 +47,4 @@ const Iphone11ProContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-
-const ContainerMoviesList = styled.div`
-  display: none;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
-const ContainerChooseTime = styled.div`
-  display: none;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  `;
-
-const ContainerTickets = styled.div`
-  display: none;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
-const ContainerOrderDetails = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 `;

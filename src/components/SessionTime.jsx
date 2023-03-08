@@ -1,61 +1,17 @@
 import styled from "styled-components";
 
-export default function SessionTime() {
+export default function SessionTime(props) {
     return (
         <>
-            <DateSession>Domingo - 24/10/2021</DateSession>
-            <TimeSession>
-                <span>15:00</span>
-                <span>19:00</span>
-            </TimeSession>
-
-            <DateSession>Segunda-feira - 25/10/2021</DateSession>
-            <TimeSession>
-                <span>15:00</span>
-                <span>19:00</span>
-            </TimeSession>
-
-            <DateSession>Terça-feira - 26/10/2021</DateSession>
-            <TimeSession>
-                <span>15:00</span>
-                <span>19:00</span>
-            </TimeSession>
-
-            <DateSession>Quarta-feira - 27/06/2021</DateSession>
-            <TimeSession>
-                <span>15:00</span>
-                <span>19:00</span>
-            </TimeSession>
-
-            <DateSession>Quinta-feira - 28/06/2021</DateSession>
-            <TimeSession>
-                <span>15:00</span>
-                <span>19:00</span>
-            </TimeSession>
-
-            <DateSession>Sexta-feira - 29/06/2021</DateSession>
-            <TimeSession>
-                <span>15:00</span>
-                <span>19:00</span>
-            </TimeSession>
-
-            <DateSession>Sábado - 30/06/2021</DateSession>
-            <TimeSession>
-                <span>15:00</span>
-                <span>19:00</span>
-            </TimeSession>
-
-            <DateSession>Domingo - 31/06/2021</DateSession>
-            <TimeSession>
-                <span>15:00</span>
-                <span>19:00</span>
-            </TimeSession>
-
-            <DateSession>Quinta-feira - 24/06/2021</DateSession>
-            <TimeSession>
-                <span>15:00</span>
-                <span>19:00</span>
-            </TimeSession>
+            {props.moviesSessions.map((s) => (
+                <div key={s.id}>
+                    <DateSession >{s.weekday} - {s.date}</DateSession>
+                    <TimeSession>
+                        <span>{s.showtimes[0].name}</span>
+                        <span>{s.showtimes[1].name}</span>
+                    </TimeSession>
+                </div>
+            ))}
         </>
     );
 }
