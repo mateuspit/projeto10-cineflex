@@ -10,7 +10,6 @@ import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 
 export default function App() {
   let [moviesList, setMoviesList] = React.useState([]);
-  let [session, setSession] = React.useState([]);
 
   const urlMovies = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
 
@@ -24,19 +23,19 @@ export default function App() {
     });
   }, []);
 
-  React.useEffect(() => {
-    const promise = axios.get(urlSession);
+  // React.useEffect(() => {
+  //   const promise = axios.get(urlSession);
 
-    promise.then(response => {
-      session = response.data;
-      // console.log(session);
-      setSession(session);
-    });
-  }, []);
+  //   promise.then(response => {
+  //     session = response.data;
+  //     // console.log(session);
+  //     setSession(session);
+  //   });
+  // }, []);
 
-  const sessionId = 77;
+  // const sessionId = 77;
 
-  const urlSession = `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${sessionId}/seats`;
+  // const urlSession = `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${sessionId}/seats`;
 
   return (
     <Iphone11ProContainer>
@@ -45,7 +44,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<MoviesListPage moviesList={moviesList} />}></Route>
           <Route path="/sessoes/:idFilme" element={<ChooseTimePage moviesList={moviesList} />}></Route>
-          <Route path="/assentos/:idSessao" element={<TicketsPage session={session} />}></Route>
+          <Route path="/assentos/:idSessao" element={<TicketsPage />}></Route>
           <Route path="/sucesso" element={<OrderDetailsPage />}></Route>
         </Routes>
       </BrowserRouter>
