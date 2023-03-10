@@ -18,7 +18,7 @@ export default function MoviesListPage(props) {
 }
 
 const ContainerMoviesList = styled.div`
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;

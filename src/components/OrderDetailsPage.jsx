@@ -19,7 +19,7 @@ export default function OrderDetailsPage() {
 }
 
 const ContainerOrderDetails = styled.div`
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;

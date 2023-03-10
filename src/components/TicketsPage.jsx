@@ -24,7 +24,7 @@ export default function TicketsPage(props) {
 }
 
 const ContainerTickets = styled.div`
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;

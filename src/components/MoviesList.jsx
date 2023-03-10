@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import Movie from "./Movie";
+import React from "react";
 
 export default function MoviesList(props) {
+
+    
+
+    
+    
     return (
-        <MoviesContainer>
-            <Movie moviesList={props.moviesList}/>
-            {/* <Movie moviesList={props.moviesList}/> */}
+        <MoviesContainer>            
+            <Movie moviesList={props.moviesList} />
         </MoviesContainer>
     );
 }

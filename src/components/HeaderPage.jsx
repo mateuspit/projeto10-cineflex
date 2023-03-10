@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import { BiArrowBack } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 export default function HeaderPage() {
     return (
         <>
             <BackArrow><BiArrowBack /></BackArrow>
-            <HeaderTitle><p>CINEFLEX</p></HeaderTitle>            
+
+            <HeaderTitle><Link to="/"><p>CINEFLEX</p></Link></HeaderTitle>
+
         </>
     );
 }
@@ -34,5 +37,8 @@ const HeaderTitle = styled.header`
         font-size: 34px;
         line-height: 40px;        
         color: #E8833A;
+    }
+    a{
+        text-decoration: none;
     }
 `;

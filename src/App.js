@@ -6,32 +6,33 @@ import TicketsPage from "./components/TicketsPage"
 import OrderDetailsPage from "./components/OrderDetailsPage"
 import React from "react";
 import axios from "axios";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export default function App() {
-    let [moviesList, setMoviesList] = React.useState([]);
-    let [session, setSession] = React.useState([]);
+  let [moviesList, setMoviesList] = React.useState([]);
+  let [session, setSession] = React.useState([]);
 
-    const urlMovies = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
-    
-    React.useEffect(() => {
-      const promise = axios.get(urlMovies);   
-  
-      promise.then(response => {
-        moviesList = response.data;
-        setMoviesList(moviesList);
-        // console.log(moviesList[0].title);
-      });
-    }, []);
+  const urlMovies = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
 
-    React.useEffect(() => {
-      const promise = axios.get(urlSession);
-  
-      promise.then(response => {
-        
-        session = response.data;
-        setSession(session);
-      });
-    }, []);
+  React.useEffect(() => {
+    const promise = axios.get(urlMovies);
+
+    promise.then(response => {
+      moviesList = response.data;
+      setMoviesList(moviesList);
+      // console.log(moviesList);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    const promise = axios.get(urlSession);
+
+    promise.then(response => {
+
+      session = response.data;
+      setSession(session);
+    });
+  }, []);
 
   const sessionId = 77;
 
@@ -39,17 +40,15 @@ export default function App() {
 
   return (
     <Iphone11ProContainer>
-
-      <HeaderPage />
-
-      <MoviesListPage moviesList={moviesList}/>
-
-      <ChooseTimePage />
-      
-      <TicketsPage session={session}/>
-
-      <OrderDetailsPage />
-
+      <BrowserRouter>
+        <HeaderPage />
+        <Routes>
+          <Route path="/" element={<MoviesListPage moviesList={moviesList} />}></Route>
+          <Route path="/sessoes/:idFilme" element={<ChooseTimePage />}></Route>
+          <Route path="/assentos/:idSessao" element={<TicketsPage session={session} />}></Route>
+          <Route path="/sucesso" element={<OrderDetailsPage />}></Route>
+        </Routes>
+      </BrowserRouter>
     </Iphone11ProContainer>
   );
 }

@@ -34,7 +34,7 @@ export default function ChooseTimePage() {
 }
 
 const ContainerChooseTime = styled.div`
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
