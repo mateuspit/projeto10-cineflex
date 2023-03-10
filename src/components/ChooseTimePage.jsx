@@ -21,7 +21,7 @@ export default function ChooseTimePage() {
 	}, []);
 
     if(moviesSessions.length === 0) {
-		return <p>Carregando........</p>;
+		return <p>Choose page Carregando........</p>;
 	}
 
     return (

@@ -6,7 +6,7 @@ import React from "react"
 export default function MoviesListPage(props) {
 
     if(props.moviesList.length === 0) {
-		return <p>Carregando........</p>;
+		return <p>MovieList Carregando........</p>;
 	}
 
     return (

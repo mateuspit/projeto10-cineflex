@@ -9,18 +9,33 @@ import axios from "axios";
 
 export default function App() {
     let [moviesList, setMoviesList] = React.useState([]);
+    let [session, setSession] = React.useState([]);
 
     const urlMovies = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
     
     React.useEffect(() => {
-		const promise = axios.get(urlMovies);   
+      const promise = axios.get(urlMovies);   
+  
+      promise.then(response => {
+        moviesList = response.data;
+        setMoviesList(moviesList);
+        // console.log(moviesList[0].title);
+      });
+    }, []);
 
-		promise.then(response => {
-            moviesList = response.data;
-			setMoviesList(moviesList);
-			// console.log(moviesList[0].title);
-		});
-	}, []);
+    React.useEffect(() => {
+      const promise = axios.get(urlSession);
+  
+      promise.then(response => {
+        
+        session = response.data;
+        setSession(session);
+      });
+    }, []);
+
+  const sessionId = 77;
+
+  const urlSession = `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${sessionId}/seats`;
 
   return (
     <Iphone11ProContainer>
@@ -31,7 +46,7 @@ export default function App() {
 
       <ChooseTimePage />
       
-      <TicketsPage />
+      <TicketsPage session={session}/>
 
       <OrderDetailsPage />
 

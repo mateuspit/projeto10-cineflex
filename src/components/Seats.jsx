@@ -1,69 +1,21 @@
 import styled from "styled-components";
+import React from "react";
 
-export default function Seats() {
+export default function Seats(props) {
+
+    function plotSeatList(seat){
+        if(seat.isAvailable === true){
+            return <Seat>{seat.name}</Seat>;            
+        }
+        else{
+            return <SeatUnavailable>{seat.name}</SeatUnavailable>
+        }
+    }
+
     return (
         <>
             <ContainerSeats>
-                <Seat>01</Seat>
-                <Seat>02</Seat>
-                <Seat>03</Seat>
-                <Seat>04</Seat>
-                <Seat>05</Seat>
-                <Seat>06</Seat>
-                <Seat>07</Seat>
-                <Seat>08</Seat>
-                <Seat>09</Seat>
-                <Seat>10</Seat>
-                <Seat>01</Seat>
-                <Seat>02</Seat>
-                <Seat>03</Seat>
-                <Seat>04</Seat>
-                <Seat>05</Seat>
-                <Seat>06</Seat>
-                <Seat>07</Seat>
-                <Seat>08</Seat>
-                <Seat>09</Seat>
-                <Seat>10</Seat>
-                <Seat>11</Seat>
-                <Seat>12</Seat>
-                <Seat>13</Seat>
-                <Seat>14</Seat>
-                <SeatSelected>15</SeatSelected>
-                <SeatSelected>16</SeatSelected>
-                <Seat>17</Seat>
-                <Seat>18</Seat>
-                <Seat>19</Seat>
-                <Seat>20</Seat>
-                <Seat>21</Seat>
-                <Seat>22</Seat>
-                <Seat>23</Seat>
-                <Seat>24</Seat>
-                <Seat>25</Seat>
-                <Seat>26</Seat>
-                <Seat>27</Seat>
-                <SeatUnavailable>28</SeatUnavailable>
-                <SeatUnavailable>29</SeatUnavailable>
-                <SeatUnavailable>30</SeatUnavailable>
-                <Seat>31</Seat>
-                <Seat>32</Seat>
-                <Seat>33</Seat>
-                <Seat>34</Seat>
-                <Seat>35</Seat>
-                <Seat>36</Seat>
-                <Seat>37</Seat>
-                <Seat>38</Seat>
-                <Seat>39</Seat>
-                <Seat>30</Seat>
-                <Seat>41</Seat>
-                <Seat>42</Seat>
-                <Seat>43</Seat>
-                <Seat>44</Seat>
-                <Seat>45</Seat>
-                <Seat>46</Seat>
-                <Seat>47</Seat>
-                <Seat>48</Seat>
-                <Seat>49</Seat>
-                <Seat>50</Seat>
+                {props.session.seats.map((seat) => plotSeatList(seat))}
             </ContainerSeats>
             <ContainerSeatsIconsStatus>
                 <Status>
