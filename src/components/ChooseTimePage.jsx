@@ -4,21 +4,32 @@ import FooterChooseTime from "./FooterChooseTime";
 import MainTitleChooseTime from "./MainTitleChooseTime";
 import React from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
-export default function ChooseTimePage() {
-    const idMovie = 7;
+export default function ChooseTimePage(props) {
+
+    const params = useParams();
+
+    React.useEffect(() => {
+		// console.log(params.idFilme);
+		// console.log(props.moviesList);
+	}, [props]);
+
+    const idMovie = params.idFilme;
     const urlSessions = `https://mock-api.driven.com.br/api/v8/cineflex/movies/${idMovie}/showtimes`;
 
     let [moviesSessions, setMoviesSessions] = React.useState([]);
     
     React.useEffect(() => {
 		const promise = axios.get(urlSessions);   
+        // console.log(urlSessions);
 
 		promise.then(response => {
             moviesSessions = response.data;
 			setMoviesSessions(moviesSessions);
 		});
 	}, []);
+
 
     if(moviesSessions.length === 0) {
 		return <p>Choose page Carregando........</p>;

@@ -1,14 +1,24 @@
 import styled from "styled-components";
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function SessionTime(props) {
+
+
+    // React.useEffect(() => {
+    //     console.log(props.moviesSessions);
+    // }, []);
+
     return (
         <>
             {props.moviesSessions.map((s) => (
                 <div key={s.id}>
                     <DateSession >{s.weekday} - {s.date}</DateSession>
                     <TimeSession>
-                        <span>{s.showtimes[0].name}</span>
-                        <span>{s.showtimes[1].name}</span>
+                        <Link to={`/assentos/${s.showtimes[0].id}`}><span>{s.showtimes[0].name}</span></Link>
+                        <Link to={`/assentos/${s.showtimes[1].id}`}><span>{s.showtimes[1].name}</span></Link>
+                        {/* <span>{s.showtimes[0].name}</span>
+                        <span>{s.showtimes[1].name}</span> */}
                     </TimeSession>
                 </div>
             ))}
@@ -49,5 +59,18 @@ const TimeSession = styled.p`
             height: 43px;
             margin-right: 9px;
             cursor: pointer;
+        }
+        a{
+            color: #FFFFFF;
+            text-decoration: none;
+            &:link, &:visited {
+                color: none;
+                text-decoration: none;
+                cursor: none;
+            }
+
+            &:link:active, &:visited:active {
+                color: none;
+            }
         }   
 `;

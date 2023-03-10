@@ -6,7 +6,7 @@ import TicketsPage from "./components/TicketsPage"
 import OrderDetailsPage from "./components/OrderDetailsPage"
 import React from "react";
 import axios from "axios";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 
 export default function App() {
   let [moviesList, setMoviesList] = React.useState([]);
@@ -28,8 +28,8 @@ export default function App() {
     const promise = axios.get(urlSession);
 
     promise.then(response => {
-
       session = response.data;
+      // console.log(session);
       setSession(session);
     });
   }, []);
@@ -44,7 +44,7 @@ export default function App() {
         <HeaderPage />
         <Routes>
           <Route path="/" element={<MoviesListPage moviesList={moviesList} />}></Route>
-          <Route path="/sessoes/:idFilme" element={<ChooseTimePage />}></Route>
+          <Route path="/sessoes/:idFilme" element={<ChooseTimePage moviesList={moviesList} />}></Route>
           <Route path="/assentos/:idSessao" element={<TicketsPage session={session} />}></Route>
           <Route path="/sucesso" element={<OrderDetailsPage />}></Route>
         </Routes>
