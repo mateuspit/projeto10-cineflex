@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import img4 from "../assets/imgs/image 6.png"
 import React from "react";
 
 export default function FooterChooseTime(props) {

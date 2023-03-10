@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-export default function BuyerData() {
+export default function BuyerData(props) {
     return (
         <ContainerBuyerData>
-            <Labels>Nome do comprador: (Assento X)</Labels>
+            {/* <Labels>Nome do comprador: (Assento {props.selectedSeats[props.selectedSeats.length-1]})</Labels> */}
+            <Labels>Nome do comprador: (Assento {props.selectedSeats})</Labels>
             <Input placeholder="Digite seu nome..."/>
             <Labels>CPF do comprador:</Labels>
             <Input placeholder="Digite seu CPF..."/>

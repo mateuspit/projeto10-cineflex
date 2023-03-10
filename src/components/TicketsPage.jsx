@@ -10,6 +10,29 @@ import { useParams } from "react-router-dom";
 
 export default function TicketsPage() {
     let [session, setSession] = React.useState([]);
+    const [selectedSeats, setSelectedSeats] = React.useState([]);
+
+    function selectSeat(seat) {
+        // console.log("Assento clicado: ",seat.name); //10
+
+        // console.log("Array de assentos cliclados: ",selectedSeats);
+        // const newSelectedSeats = [...selectedSeats, Number(seat.name)];
+        // console.log(newSelectedSeats.includes(seat.name));
+
+        if (selectedSeats.includes(seat.name)) {
+            if (window.confirm(`Tem certeza que deseja excluir o assento ${seat.name}? Todos os dados preenchidos serão excluidos.`)) {
+                const newSelectedSeats = selectedSeats.filter((s) => (s !== seat.name) && (s != seat.name));
+                setSelectedSeats(newSelectedSeats);
+            }
+        }
+        else {
+            selectedSeats.push(seat.name);//guarda 10
+            const newSelectedSeats = [...selectedSeats];
+            setSelectedSeats(newSelectedSeats);
+            console.log(selectedSeats.includes(seat.name))
+            console.log(newSelectedSeats)
+        }
+    }
 
     React.useEffect(() => {
         const promise = axios.get(urlSession);
@@ -31,12 +54,19 @@ export default function TicketsPage() {
         return <p>Tickets Page Carregando........</p>;
     }
 
+    function dataUserInput(selectedSeats) {
+        return (
+            <>
+                <BuyerData selectedSeats={selectedSeats} />
+            </>
+        );
+    }
+
     return (
         <ContainerTickets>
             <MainTitleTickets />
-            <Seats session={session} />
-            <BuyerData />
-            <BuyerData />
+            <Seats session={session} selectedSeats={selectedSeats} selectedSeatsFunction={selectSeat} />
+            {selectedSeats.map(dataUserInput)}
             <TicketsButton />
             <FooterTickets session={session} />
         </ContainerTickets>
