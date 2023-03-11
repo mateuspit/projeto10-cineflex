@@ -11,28 +11,36 @@ import { useParams } from "react-router-dom";
 export default function TicketsPage() {
     let [session, setSession] = React.useState([]);
     const [selectedSeats, setSelectedSeats] = React.useState([]);
+    const [costumerData, setCostumerData] = React.useState([]);
 
     function selectSeat(seat) {
-        // console.log("Assento clicado: ",seat.name); //10
-
-        // console.log("Array de assentos cliclados: ",selectedSeats);
-        // const newSelectedSeats = [...selectedSeats, Number(seat.name)];
-        // console.log(newSelectedSeats.includes(seat.name));
-
         if (selectedSeats.includes(seat.name)) {
             if (window.confirm(`Tem certeza que deseja excluir o assento ${seat.name}? Todos os dados preenchidos serão excluidos.`)) {
                 const newSelectedSeats = selectedSeats.filter((s) => (s !== seat.name) && (s != seat.name));
                 setSelectedSeats(newSelectedSeats);
+                console.log(newSelectedSeats)
+                const deleteThisIndex = costumerData.findIndex(data => data.id === seat.name);
+                // const result = inventory.find( fruit => fruit.name === 'cherries' );
+                const updatedCustomerData = costumerData.slice(0, deleteThisIndex).concat(costumerData.slice(deleteThisIndex + 1));
+                setCostumerData(updatedCustomerData);
+                console.log(updatedCustomerData);
             }
         }
         else {
             selectedSeats.push(seat.name);//guarda 10
             const newSelectedSeats = [...selectedSeats];
             setSelectedSeats(newSelectedSeats);
-            console.log(selectedSeats.includes(seat.name))
+            // console.log(selectedSeats.includes(seat.name))
             console.log(newSelectedSeats)
+            const newCustomer = { nome: "", cpf: "", id: seat.name};
+            // cria um novo array que inclui o novo objeto
+            const updatedCustomerData = [...costumerData, newCustomer];
+            // define o novo array como o novo estado
+            setCostumerData(updatedCustomerData);
         }
     }
+
+    
 
     React.useEffect(() => {
         const promise = axios.get(urlSession);
@@ -55,9 +63,11 @@ export default function TicketsPage() {
     }
 
     function dataUserInput(selectedSeats) {
+        // console.log("ticketpage: ",costumerData);
+        // console.log(selectedSeats);
         return (
             <>
-                <BuyerData selectedSeats={selectedSeats} />
+                <BuyerData costumerData={costumerData} setCostumerData={setCostumerData} selectedSeats={selectedSeats} />
             </>
         );
     }

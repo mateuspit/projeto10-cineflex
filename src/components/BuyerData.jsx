@@ -1,13 +1,34 @@
 import styled from "styled-components";
+import React from "react";
 
 export default function BuyerData(props) {
+    // function getInputNameData(e) {
+    //     // if (props.selectedSeats) {
+    //         // const uploadThisIndex = props.selectedSeats.findIndex(data => data.id === seat.name);
+    //         console.log(props.costumerData);
+    //         console.log(e.target.value);
+    //     // }
+    // }
+    React.useEffect(() => {
+        console.log(props.selectedSeats);
+        // const updateThisIndex = costumerData.findIndex(data => data.id === props.selectedSeats);
+        const updateThisIndex = props.costumerData.findIndex(data => data.id === props.selectedSeats);
+        console.log(props.costumerData[updateThisIndex]);
+        console.log(props.costumerData);
+        // const newCostumerData = 
+        // props.setCostumerData()
+    }, []);
+
     return (
         <ContainerBuyerData>
             {/* <Labels>Nome do comprador: (Assento {props.selectedSeats[props.selectedSeats.length-1]})</Labels> */}
             <Labels>Nome do comprador: (Assento {props.selectedSeats})</Labels>
-            <Input placeholder="Digite seu nome..."/>
+            <Input
+                placeholder="Digite seu nome..."
+                onChange={props.getInputNameData}
+            />
             <Labels>CPF do comprador:</Labels>
-            <Input placeholder="Digite seu CPF..."/>
+            <Input placeholder="Digite seu CPF..." />
         </ContainerBuyerData>
     );
 }
