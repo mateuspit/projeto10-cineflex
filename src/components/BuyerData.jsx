@@ -13,11 +13,44 @@ export default function BuyerData(props) {
         console.log(props.selectedSeats);
         // const updateThisIndex = costumerData.findIndex(data => data.id === props.selectedSeats);
         const updateThisIndex = props.costumerData.findIndex(data => data.id === props.selectedSeats);
+        console.log(updateThisIndex);
         console.log(props.costumerData[updateThisIndex]);
+        
+        console.log(props.costumerData[updateThisIndex].name);
         console.log(props.costumerData);
         // const newCostumerData = 
         // props.setCostumerData()
     }, []);
+
+    function getCostumerName(e) {
+        props.setCostumerData(prevData => prevData.map(item => {
+            if (item.id === props.selectedSeats) {
+                // console.log("map: ",item)
+                return {
+                    ...item,
+                    nome: e.target.value
+                };
+            }
+            // console.log("map: ",item.id)
+            return item;
+        }));
+    }
+
+    function getCostumerCPF(e) {
+        props.setCostumerData(prevData => prevData.map(item => {
+            if (item.id === props.selectedSeats) {
+                // console.log("map: ",item)
+                return {
+                    ...item,
+                    cpf: e.target.value
+                };
+            }
+            // console.log("map: ",item.id)
+            return item;
+        }));
+    }
+
+    const updateThisIndex = props.costumerData.findIndex(data => data.id === props.selectedSeats);
 
     return (
         <ContainerBuyerData>
@@ -25,10 +58,15 @@ export default function BuyerData(props) {
             <Labels>Nome do comprador: (Assento {props.selectedSeats})</Labels>
             <Input
                 placeholder="Digite seu nome..."
-                onChange={props.getInputNameData}
+                value={props.costumerData[updateThisIndex].name}
+                onChange={getCostumerName}
             />
             <Labels>CPF do comprador:</Labels>
-            <Input placeholder="Digite seu CPF..." />
+            <Input
+                placeholder="Digite seu CPF..."
+                value={props.costumerData[updateThisIndex].CPF}
+                onChange={getCostumerCPF}
+            />
         </ContainerBuyerData>
     );
 }
