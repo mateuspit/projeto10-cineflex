@@ -9,18 +9,18 @@ export default function BuyerData(props) {
     //         console.log(e.target.value);
     //     // }
     // }
-    React.useEffect(() => {
-        console.log(props.selectedSeats);
-        // const updateThisIndex = costumerData.findIndex(data => data.id === props.selectedSeats);
-        const updateThisIndex = props.costumerData.findIndex(data => data.id === props.selectedSeats);
-        console.log(updateThisIndex);
-        console.log(props.costumerData[updateThisIndex]);
-        
-        console.log(props.costumerData[updateThisIndex].name);
-        console.log(props.costumerData);
-        // const newCostumerData = 
-        // props.setCostumerData()
-    }, []);
+    // React.useEffect(() => {
+    //     // console.log(props.selectedSeats);
+    //     // const updateThisIndex = costumerData.findIndex(data => data.id === props.selectedSeats);
+    //     const updateThisIndex = props.costumerData.findIndex(data => data.id === props.selectedSeats);
+    //     // console.log(updateThisIndex);
+    //     // console.log(props.costumerData[updateThisIndex]);
+
+    //     // console.log(props.costumerData[updateThisIndex].name);
+    //     // console.log(props.costumerData);
+    //     // const newCostumerData = 
+    //     // props.setCostumerData()
+    // }, []);
 
     function getCostumerName(e) {
         props.setCostumerData(prevData => prevData.map(item => {
@@ -56,17 +56,22 @@ export default function BuyerData(props) {
         <ContainerBuyerData>
             {/* <Labels>Nome do comprador: (Assento {props.selectedSeats[props.selectedSeats.length-1]})</Labels> */}
             <Labels>Nome do comprador: (Assento {props.selectedSeats})</Labels>
-            <Input
-                placeholder="Digite seu nome..."
-                value={props.costumerData[updateThisIndex].name}
-                onChange={getCostumerName}
-            />
-            <Labels>CPF do comprador:</Labels>
-            <Input
-                placeholder="Digite seu CPF..."
-                value={props.costumerData[updateThisIndex].CPF}
-                onChange={getCostumerCPF}
-            />
+            <form>
+                <Input
+                    required
+                    placeholder="Digite seu nome..."
+                    // value={props.costumerData[updateThisIndex].name}
+                    value={props.costumerData[updateThisIndex].name}
+                    onChange={getCostumerName}
+                />
+                <Labels>CPF do comprador:</Labels>
+                <Input
+                    required
+                    placeholder="Digite seu CPF..."
+                    value={props.costumerData[updateThisIndex].CPF}
+                    onChange={getCostumerCPF}
+                />
+            </form>
         </ContainerBuyerData>
     );
 }

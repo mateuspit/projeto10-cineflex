@@ -31,7 +31,7 @@ export default function TicketsPage() {
             const newSelectedSeats = [...selectedSeats];
             setSelectedSeats(newSelectedSeats);
             // console.log(selectedSeats.includes(seat.name))
-            console.log(newSelectedSeats)
+            // console.log(newSelectedSeats)
             const newCustomer = { nome: "", cpf: "", id: seat.name};
             // cria um novo array que inclui o novo objeto
             const updatedCustomerData = [...costumerData, newCustomer];
