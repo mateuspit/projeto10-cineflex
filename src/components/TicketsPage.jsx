@@ -13,6 +13,24 @@ export default function TicketsPage() {
     const [selectedSeats, setSelectedSeats] = React.useState([]);
     const [costumerData, setCostumerData] = React.useState([]);
 
+    function makePost() {
+        console.log(costumerData);
+        const sendableObject = {
+            ids: [],
+            compradores: []
+        }
+        costumerData.forEach(data => {
+            sendableObject.ids.push(data.id);
+            const novoComprador = {
+                idAssento: data.id,
+                nome: data.nome,
+                cpf: data.cpf
+            };
+            sendableObject.compradores.push(novoComprador);
+        });
+        console.log(sendableObject);
+    }
+
     function selectSeat(seat) {
         if (selectedSeats.includes(seat.name)) {
             if (window.confirm(`Tem certeza que deseja excluir o assento ${seat.name}? Todos os dados preenchidos serão excluidos.`)) {
@@ -31,16 +49,18 @@ export default function TicketsPage() {
             const newSelectedSeats = [...selectedSeats];
             setSelectedSeats(newSelectedSeats);
             // console.log(selectedSeats.includes(seat.name))
+            // console.log(seat.id)
             // console.log(newSelectedSeats)
-            const newCustomer = { nome: "", cpf: "", id: seat.name};
+            const newCustomer = { nome: "", cpf: "", id: seat.name, realId: seat.id };
             // cria um novo array que inclui o novo objeto
             const updatedCustomerData = [...costumerData, newCustomer];
             // define o novo array como o novo estado
+            console.log(updatedCustomerData)
             setCostumerData(updatedCustomerData);
         }
     }
 
-    
+
 
     React.useEffect(() => {
         const promise = axios.get(urlSession);
@@ -77,7 +97,7 @@ export default function TicketsPage() {
             <MainTitleTickets />
             <Seats session={session} selectedSeats={selectedSeats} selectedSeatsFunction={selectSeat} />
             {selectedSeats.map(dataUserInput)}
-            <TicketsButton />
+            <TicketsButton makePost={makePost} />
             <FooterTickets session={session} />
         </ContainerTickets>
     );

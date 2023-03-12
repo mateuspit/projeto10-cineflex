@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export default function TicketsButton() {
+export default function TicketsButton(props) {
     return (
-        <Button>Reservar assento(s)</Button>
+        <Button onClick={props.makePost}>Reservar assento(s)</Button>
     );
 }
 
