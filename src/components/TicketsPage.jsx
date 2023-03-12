@@ -6,12 +6,13 @@ import FooterTickets from "./FooterTickets";
 import MainTitleTickets from "./MainTitleTickets";
 import React from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function TicketsPage() {
     let [session, setSession] = React.useState([]);
     const [selectedSeats, setSelectedSeats] = React.useState([]);
     const [costumerData, setCostumerData] = React.useState([]);
+    const navigate = useNavigate();
 
     function makePost() {
         console.log(costumerData);
@@ -20,15 +21,27 @@ export default function TicketsPage() {
             compradores: []
         }
         costumerData.forEach(data => {
-            sendableObject.ids.push(data.id);
+            sendableObject.ids.push(data.realId);
             const novoComprador = {
-                idAssento: data.id,
+                idAssento: data.realId,
                 nome: data.nome,
                 cpf: data.cpf
             };
             sendableObject.compradores.push(novoComprador);
         });
         console.log(sendableObject);
+
+        const promise = axios.post('https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many', sendableObject)
+        promise.then((response) => {
+            console.log(response.data);
+            console.log(sendableObject);
+            navigate('/sucesso');
+            // alert("Deu bom");
+        })
+        promise.catch((error) => {
+            console.error(error);
+            // alert("Erro");
+        });
     }
 
     function selectSeat(seat) {
