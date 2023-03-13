@@ -18,6 +18,7 @@ export default function TicketsPage(props) {
 
     React.useEffect(() => {
         props.setCostumerData([]);
+        window.scrollTo(0, 0);
       }, []);
 
     // function backToSessionsList() {
@@ -140,7 +141,7 @@ export default function TicketsPage(props) {
     return (
         <ContainerTickets>
             {/* <BackArrow onClick={backToSessionsList}><BiArrowBack size={40} /></BackArrow> */}
-            <BackArrow onClick={() => navigate(-1)}><BiArrowBack size={40} /></BackArrow>
+            <BackArrow data-test="go-home-header-btn" onClick={() => navigate(-1)}><BiArrowBack size={40} /></BackArrow>
             <MainTitleTickets />
             <Seats session={props.session} selectedSeats={selectedSeats} selectedSeatsFunction={selectSeat} />
             {selectedSeats.map(dataUserInput)}

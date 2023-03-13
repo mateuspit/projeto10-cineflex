@@ -13,10 +13,10 @@ export default function SessionTime(props) {
         <>
             {props.moviesSessions.map((s) => (
                 <div key={s.id}>
-                    <DateSession >{s.weekday} - {s.date}</DateSession>
+                    <DateSession data-test="movie-day">{s.weekday} - {s.date}</DateSession>
                     <TimeSession>
-                        <Link to={`/assentos/${s.showtimes[0].id}`}><span>{s.showtimes[0].name}</span></Link>
-                        <Link to={`/assentos/${s.showtimes[1].id}`}><span>{s.showtimes[1].name}</span></Link>
+                        <Link to={`/assentos/${s.showtimes[0].id}`}><span data-test="showtime">{s.showtimes[0].name}</span></Link>
+                        <Link to={`/assentos/${s.showtimes[1].id}`}><span data-test="showtime">{s.showtimes[1].name}</span></Link>
                         {/* <span>{s.showtimes[0].name}</span>
                         <span>{s.showtimes[1].name}</span> */}
                     </TimeSession>

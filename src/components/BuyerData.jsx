@@ -58,6 +58,7 @@ export default function BuyerData(props) {
             <Labels>Nome do comprador: (Assento {props.selectedSeats})</Labels>
             <form>
                 <Input
+                    data-test="client-name"
                     required
                     placeholder="Digite seu nome..."
                     // value={props.costumerData[updateThisIndex].name}
@@ -66,6 +67,7 @@ export default function BuyerData(props) {
                 />
                 <Labels>CPF do comprador: (Assento {props.selectedSeats})</Labels>
                 <Input
+                    data-test="client-cpf"
                     type="number"
                     required
                     placeholder="Digite seu CPF..."

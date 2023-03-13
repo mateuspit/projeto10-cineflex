@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export default function TicketsButton(props) {
     return (
-        <Button onClick={props.makePost}>Reservar assento(s)</Button>
+        <Button data-test="book-seat-btn" onClick={props.makePost}>Reservar assento(s)</Button>
     );
 }
 

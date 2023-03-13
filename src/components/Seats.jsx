@@ -7,13 +7,13 @@ export default function Seats(props) {
 
     function plotSeatList(seat){
         if(seat.isAvailable === true && props.selectedSeats.includes(seat.name)){
-            return <SeatSelected onClick={()=>props.selectedSeatsFunction(seat)} >{seat.name}</SeatSelected>           
+            return <SeatSelected data-test="seat" onClick={()=>props.selectedSeatsFunction(seat)} >{seat.name}</SeatSelected>           
         }
         else if(seat.isAvailable === true){
-            return <Seat onClick={()=>props.selectedSeatsFunction(seat)} >{seat.name}</Seat>;            
+            return <Seat data-test="seat" onClick={()=>props.selectedSeatsFunction(seat)} >{seat.name}</Seat>;            
         }        
         else{
-            return <SeatUnavailable onClick={()=>alert("Esse assento não está disponível")}>{seat.name}</SeatUnavailable>
+            return <SeatUnavailable data-test="seat" onClick={()=>alert("Esse assento não está disponível")}>{seat.name}</SeatUnavailable>
         }
     }
 

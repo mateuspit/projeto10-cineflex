@@ -13,7 +13,7 @@ export default function Movie(props) {
         <>
             {props.moviesList.map((list, i) =>
                 <Link to={`/sessoes/${list.id}`}>
-                    <MoviePoster key={i} src={list.posterURL} alt={list.title} />
+                    <MoviePoster data-test="movie" key={i} src={list.posterURL} alt={list.title} />
                 </Link>
             )}
         </>

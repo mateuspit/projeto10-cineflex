@@ -8,7 +8,7 @@ export default function FooterChooseTime(props) {
     return (
         <ContainerFooter>
             <FooterMovie>
-                <img src={props.session.movie.posterURL} alt={props.session.name} />
+                <img data-test="footer" src={props.session.movie.posterURL} alt={props.session.name} />
                 <FooterMovieStats>
                     <h1>{props.session.movie.title}</h1>
                     <h1>{props.session.day.weekday} - {props.session.name}</h1>

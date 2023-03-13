@@ -29,6 +29,7 @@ export default function ChooseTimePage(props) {
 
     React.useEffect(() => {
         const promise = axios.get(urlSessions);
+        window.scrollTo(0, 0);
         // console.log(urlSessions);
 
         promise.then(response => {
@@ -46,7 +47,7 @@ export default function ChooseTimePage(props) {
     return (
         <ContainerChooseTime >
             {/* <BackArrow onClick={backToMovieList}><BiArrowBack size={40} /></BackArrow> */}
-            <BackArrow onClick={() => navigate(-1)}><BiArrowBack size={40} /></BackArrow>
+            <BackArrow data-test="go-home-header-btn" onClick={() => navigate(-1)}><BiArrowBack size={40} /></BackArrow>
             <MainTitleChooseTime />
             <SessionsTimeList moviesSessions={moviesSessions.days} />
             <FooterChooseTime moviesSessions={moviesSessions} />

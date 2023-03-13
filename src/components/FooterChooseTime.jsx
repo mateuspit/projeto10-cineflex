@@ -3,8 +3,8 @@ import styled from "styled-components";
 export default function FooterChooseTime(props) {
     return (
         <ContainerFooter>
-            <FooterMovie>
-                <img src={props.moviesSessions.posterURL} alt={props.moviesSessions.title} />
+            <FooterMovie >
+                <img data-test="footer" src={props.moviesSessions.posterURL} alt={props.moviesSessions.title} />
                 <h1>{props.moviesSessions.title}</h1>
             </FooterMovie>
         </ContainerFooter>

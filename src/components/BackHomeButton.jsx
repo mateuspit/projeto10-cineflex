@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function BackHomeButton(props) {
     return (
-        <Link to={`/`}><Button onClick={props.clearData}>Voltar pra Home</Button></Link>
+        <Link to={`/`}><Button data-test="go-home-btn" onClick={props.clearData}>Voltar pra Home</Button></Link>
     );
 }
 

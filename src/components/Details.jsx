@@ -4,7 +4,7 @@ export default function Details(props) {
     // console.log(props.costumerData);
     return (
         <ContainerDetails>
-            <MovieDetails>
+            <MovieDetails data-test="movie-info">
                 <h1>Filme e sessão</h1>
                 <p>{props.session.movie.title}</p>
                 <p>{props.session.day.date} {props.session.name}</p>
@@ -12,7 +12,7 @@ export default function Details(props) {
 
             <SeatsDetails>
                 <h1>Ingressos</h1>
-                {props.costumerData.map((data)=><p>{data.id}</p>)}
+                {props.costumerData.map((data)=><p data-test="seats-info">{data.id}</p>)}
             </SeatsDetails>
 
             <BuyerDetails>
@@ -20,7 +20,7 @@ export default function Details(props) {
                 {/* <p>Nome: João da Silva Sauro</p>
                 <p>CPF: 123.456.789-10</p> */}
                 {props.costumerData.map((data)=>
-                <ContainerNameAndCpf>
+                <ContainerNameAndCpf data-test="client-info">
                 <p>Nome: {data.nome}</p><p>CPF: {data.cpf}</p>
                 </ContainerNameAndCpf>)}
                 {/* {props.costumerData.map((data)=><p>CPF: {data.cpf}</p>)} */}
