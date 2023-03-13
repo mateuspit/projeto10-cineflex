@@ -2,17 +2,19 @@ import styled from "styled-components";
 import MoviesList from "./MoviesList";
 import MainTitleMoviesList from "./MainTitleMoviesList";
 import React from "react"
+import Loading from "./Loading";
 
 export default function MoviesListPage(props) {
 
-    if(props.moviesList.length === 0) {
-		return <p>MovieList Carregando........</p>;
-	}
+    if (props.moviesList.length === 0) {
+    // if (true) {
+        return <Loading />;
+    }
 
     return (
         <ContainerMoviesList>
             <MainTitleMoviesList />
-            <MoviesList moviesList={props.moviesList}/>
+            <MoviesList moviesList={props.moviesList} />
         </ContainerMoviesList>
     );
 }

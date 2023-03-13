@@ -7,6 +7,7 @@ import MainTitleTickets from "./MainTitleTickets";
 import React from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import Loading from "./Loading";
 
 export default function TicketsPage(props) {
     // let [session, setSession] = React.useState([]);
@@ -92,7 +93,7 @@ export default function TicketsPage(props) {
     const urlSession = `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${sessionId}/seats`;
 
     if (props.session.length === 0) {
-        return <p>Tickets Page Carregando........</p>;
+        return <Loading />;
     }
 
     function dataUserInput(selectedSeats) {

@@ -5,6 +5,7 @@ import MainTitleChooseTime from "./MainTitleChooseTime";
 import React from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Loading from "./Loading";
 
 export default function ChooseTimePage(props) {
 
@@ -33,7 +34,7 @@ export default function ChooseTimePage(props) {
 
 
     if(moviesSessions.length === 0) {
-		return <p>Choose page Carregando........</p>;
+		return <Loading />;
 	}
 
     return (
