@@ -15,8 +15,8 @@ export default function SessionTime(props) {
                 <div key={s.id}>
                     <DateSession data-test="movie-day">{s.weekday} - {s.date}</DateSession>
                     <TimeSession>
-                        <Link to={`/assentos/${s.showtimes[0].id}`}><ButtonSession data-test="showtime">{s.showtimes[0].name}</ButtonSession></Link>
-                        <Link to={`/assentos/${s.showtimes[1].id}`}><ButtonSession data-test="showtime">{s.showtimes[1].name}</ButtonSession></Link>
+                        <Link data-test="showtime" to={`/assentos/${s.showtimes[0].id}`}><ButtonSession >{s.showtimes[0].name}</ButtonSession></Link>
+                        <Link data-test="showtime" to={`/assentos/${s.showtimes[1].id}`}><ButtonSession >{s.showtimes[1].name}</ButtonSession></Link>
                         {/* <span>{s.showtimes[0].name}</span>
                         <span>{s.showtimes[1].name}</span> */}
                     </TimeSession>
