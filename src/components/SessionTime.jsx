@@ -15,8 +15,8 @@ export default function SessionTime(props) {
                 <div key={s.id}>
                     <DateSession data-test="movie-day">{s.weekday} - {s.date}</DateSession>
                     <TimeSession>
-                        <Link to={`/assentos/${s.showtimes[0].id}`}><span data-test="showtime">{s.showtimes[0].name}</span></Link>
-                        <Link to={`/assentos/${s.showtimes[1].id}`}><span data-test="showtime">{s.showtimes[1].name}</span></Link>
+                        <Link to={`/assentos/${s.showtimes[0].id}`}><ButtonSession data-test="showtime">{s.showtimes[0].name}</ButtonSession></Link>
+                        <Link to={`/assentos/${s.showtimes[1].id}`}><ButtonSession data-test="showtime">{s.showtimes[1].name}</ButtonSession></Link>
                         {/* <span>{s.showtimes[0].name}</span>
                         <span>{s.showtimes[1].name}</span> */}
                     </TimeSession>
@@ -37,6 +37,28 @@ const DateSession = styled.h1`
         color: #293845;   
         margin-bottom: 22px;
 `;
+
+const ButtonSession = styled.button`
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #E8833A;
+            border-radius: 3px;
+            width: 82px;
+            height: 43px;
+            margin-right: 9px;
+            cursor: pointer;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 21px;
+            letter-spacing: 0.02em;
+            color: #FFFFFF;
+            margin-bottom: 23px;
+            text-align: center;
+            border: none
+`;
 const TimeSession = styled.p`
         font-family: 'Roboto';
         font-style: normal;
@@ -49,17 +71,7 @@ const TimeSession = styled.p`
         letter-spacing: 0.02em;
         color: #FFFFFF;
         margin-bottom: 23px;
-        span {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #E8833A;
-            border-radius: 3px;
-            width: 82px;
-            height: 43px;
-            margin-right: 9px;
-            cursor: pointer;
-        }
+        
         a{
             color: #FFFFFF;
             text-decoration: none;

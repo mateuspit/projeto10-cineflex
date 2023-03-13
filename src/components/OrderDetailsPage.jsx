@@ -4,6 +4,7 @@ import Details from "./Details";
 import BackHomeButton from "./BackHomeButton";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
 export default function OrderDetailsPage(props) {
     const navigate = useNavigate();
