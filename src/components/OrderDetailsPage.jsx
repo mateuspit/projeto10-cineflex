@@ -7,17 +7,15 @@ import { useNavigate } from "react-router-dom";
 
 export default function OrderDetailsPage(props) {
     const navigate = useNavigate();
-        // React.useEffect(() => {
-    //     console.log(props.session.movie.posterURL)
-    //     // console.log(props.session.day.weekday)
-    //     // console.log(props.session.seats[6].isAvailable)
-    // }, []);
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <ContainerOrderDetails>
             <BackArrow onClick={() => navigate(-1)}><BiArrowBack size={40} /></BackArrow>
             <MainTitleOrderDetails />
-            <Details costumerData={props.costumerData} session={props.session}/>
-            <BackHomeButton clearData={props.clearData}/>
+            <Details costumerData={props.costumerData} session={props.session} />
+            <BackHomeButton clearData={props.clearData} />
         </ContainerOrderDetails>
     );
 }
