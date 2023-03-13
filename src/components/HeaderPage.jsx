@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function HeaderPage() {
     return (
         <>
-            <BackArrow><BiArrowBack /></BackArrow>
+            {/* <BackArrow><BiArrowBack size={40}/></BackArrow> */}
 
             <HeaderTitle><Link to="/"><p>CINEFLEX</p></Link></HeaderTitle>
 
@@ -13,14 +13,14 @@ export default function HeaderPage() {
     );
 }
 
-const BackArrow = styled.div`
-    /* margin-right: 90px; */
-    display: none;
-    position: absolute;
-    top: 20px;
-    left: 50px;
-    cursor: pointer;
-`;
+// const BackArrow = styled.div`
+//     /* margin-right: 90px; */
+//     display: flex;
+//     position: absolute;
+//     top: 10px;
+//     left: 30px;
+//     cursor: pointer;
+// `;
 
 const HeaderTitle = styled.header`
     width: 100vw;

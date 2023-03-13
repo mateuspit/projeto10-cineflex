@@ -8,12 +8,21 @@ import React from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "./Loading";
+import { BiArrowBack } from "react-icons/bi";
 
 export default function TicketsPage(props) {
     // let [session, setSession] = React.useState([]);
     const [selectedSeats, setSelectedSeats] = React.useState([]);
     // const [costumerData, setCostumerData] = React.useState([]);
     const navigate = useNavigate();
+
+    React.useEffect(() => {
+        props.setCostumerData([]);
+      }, []);
+
+    // function backToSessionsList() {
+    //     navigate(`/sessoes/${params.idSessao}`);
+    // }
 
     // function cpfAuthentication(cpf){
     //     if(cpf.length !== 11){
@@ -130,6 +139,8 @@ export default function TicketsPage(props) {
 
     return (
         <ContainerTickets>
+            {/* <BackArrow onClick={backToSessionsList}><BiArrowBack size={40} /></BackArrow> */}
+            <BackArrow onClick={() => navigate(-1)}><BiArrowBack size={40} /></BackArrow>
             <MainTitleTickets />
             <Seats session={props.session} selectedSeats={selectedSeats} selectedSeatsFunction={selectSeat} />
             {selectedSeats.map(dataUserInput)}
@@ -138,6 +149,15 @@ export default function TicketsPage(props) {
         </ContainerTickets>
     );
 }
+
+const BackArrow = styled.div`
+    /* margin-right: 90px; */
+    display: flex;
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    cursor: pointer;
+`;
 
 const ContainerTickets = styled.div`
   display: flex;
