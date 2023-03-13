@@ -25,6 +25,10 @@ export default function App() {
     });
   }, []);
 
+  function clearData(){
+    setCostumerData([]);
+  }
+
   // React.useEffect(() => {
   //   const promise = axios.get(urlSession);
 
@@ -54,7 +58,7 @@ export default function App() {
                 costumerData={costumerData}
                 setCostumerData={setCostumerData}
               />}></Route>
-          <Route path="/sucesso" element={<OrderDetailsPage costumerData={costumerData} session={session} />}></Route>
+          <Route path="/sucesso" element={<OrderDetailsPage clearData={clearData} costumerData={costumerData} session={session} />}></Route>
         </Routes>
       </BrowserRouter>
     </Iphone11ProContainer>

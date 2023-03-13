@@ -66,6 +66,7 @@ export default function BuyerData(props) {
                 />
                 <Labels>CPF do comprador: (Assento {props.selectedSeats})</Labels>
                 <Input
+                    type="number"
                     required
                     placeholder="Digite seu CPF..."
                     value={props.costumerData[updateThisIndex].CPF}

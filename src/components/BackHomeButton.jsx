@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export default function BackHomeButton() {
+export default function BackHomeButton(props) {
     return (
-        <Link to={`/`}><Button>Voltar pra Home</Button></Link>
+        <Link to={`/`}><Button onClick={props.clearData}>Voltar pra Home</Button></Link>
     );
 }
 

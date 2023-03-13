@@ -15,14 +15,33 @@ export default function TicketsPage(props) {
     // const [costumerData, setCostumerData] = React.useState([]);
     const navigate = useNavigate();
 
+    // function cpfAuthentication(cpf){
+    //     if(cpf.length !== 11){
+    //         alert("diferente de 11")
+    //         console.log(cpf)
+    //         return false;
+    //     }
+    //     if(typeof cpf !== "number"){
+    //         alert("diferente de number")
+    //         return false;
+    //     }
+    // }
+
     function makePost() {
+        // let cpfIsOk = true;
         // console.log(costumerData);
+        
         const sendableObject = {
             ids: [],
             compradores: []
         }
         props.costumerData.forEach(data => {
             sendableObject.ids.push(data.realId);
+            // cpfIsOk = cpfAuthentication(data.cpf)
+            // if(!cpfIsOk){
+            //     alert("Escreva o(s) CPF(s) corretamente!");
+            //     return
+            // }
             const novoComprador = {
                 idAssento: data.realId,
                 nome: data.nome,
@@ -38,6 +57,9 @@ export default function TicketsPage(props) {
             // console.log(sendableObject);
             navigate('/sucesso');
             // alert("Deu bom");
+            // props.setCostumerData([])
+            console.log(props.costumerData)
+            console.log(sendableObject)
         })
         promise.catch((error) => {
             console.error(error);

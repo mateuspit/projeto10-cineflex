@@ -13,7 +13,7 @@ export default function OrderDetailsPage(props) {
         <ContainerOrderDetails>
             <MainTitleOrderDetails />
             <Details costumerData={props.costumerData} session={props.session}/>
-            <BackHomeButton />
+            <BackHomeButton clearData={props.clearData}/>
         </ContainerOrderDetails>
     );
 }
