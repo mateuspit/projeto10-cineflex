@@ -37,6 +37,7 @@ const HeaderTitle = styled.header`
         font-size: 34px;
         line-height: 40px;        
         color: #E8833A;
+        cursor: pointer;
     }
     a{
         text-decoration: none;

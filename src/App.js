@@ -10,6 +10,8 @@ import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 
 export default function App() {
   let [moviesList, setMoviesList] = React.useState([]);
+  let [session, setSession] = React.useState([]);
+  const [costumerData, setCostumerData] = React.useState([]);
 
   const urlMovies = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
 
@@ -44,8 +46,15 @@ export default function App() {
         <Routes>
           <Route path="/" element={<MoviesListPage moviesList={moviesList} />}></Route>
           <Route path="/sessoes/:idFilme" element={<ChooseTimePage moviesList={moviesList} />}></Route>
-          <Route path="/assentos/:idSessao" element={<TicketsPage />}></Route>
-          <Route path="/sucesso" element={<OrderDetailsPage />}></Route>
+          <Route path="/assentos/:idSessao"
+            element={
+              <TicketsPage
+                session={session}
+                setSession={setSession}
+                costumerData={costumerData}
+                setCostumerData={setCostumerData}
+              />}></Route>
+          <Route path="/sucesso" element={<OrderDetailsPage costumerData={costumerData} session={session} />}></Route>
         </Routes>
       </BrowserRouter>
     </Iphone11ProContainer>

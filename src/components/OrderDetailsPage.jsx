@@ -3,7 +3,7 @@ import MainTitleOrderDetails from "./MainTitleOrderDetails";
 import Details from "./Details";
 import BackHomeButton from "./BackHomeButton";
 
-export default function OrderDetailsPage() {
+export default function OrderDetailsPage(props) {
         // React.useEffect(() => {
     //     console.log(props.session.movie.posterURL)
     //     // console.log(props.session.day.weekday)
@@ -12,7 +12,7 @@ export default function OrderDetailsPage() {
     return (
         <ContainerOrderDetails>
             <MainTitleOrderDetails />
-            <Details />
+            <Details costumerData={props.costumerData} session={props.session}/>
             <BackHomeButton />
         </ContainerOrderDetails>
     );

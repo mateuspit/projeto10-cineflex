@@ -8,19 +8,19 @@ import React from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function TicketsPage() {
-    let [session, setSession] = React.useState([]);
+export default function TicketsPage(props) {
+    // let [session, setSession] = React.useState([]);
     const [selectedSeats, setSelectedSeats] = React.useState([]);
-    const [costumerData, setCostumerData] = React.useState([]);
+    // const [costumerData, setCostumerData] = React.useState([]);
     const navigate = useNavigate();
 
     function makePost() {
-        console.log(costumerData);
+        // console.log(costumerData);
         const sendableObject = {
             ids: [],
             compradores: []
         }
-        costumerData.forEach(data => {
+        props.costumerData.forEach(data => {
             sendableObject.ids.push(data.realId);
             const novoComprador = {
                 idAssento: data.realId,
@@ -29,12 +29,12 @@ export default function TicketsPage() {
             };
             sendableObject.compradores.push(novoComprador);
         });
-        console.log(sendableObject);
+        // console.log(sendableObject);
 
         const promise = axios.post('https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many', sendableObject)
-        promise.then((response) => {
-            console.log(response.data);
-            console.log(sendableObject);
+        promise.then(() => {
+            // console.log(response.data);
+            // console.log(sendableObject);
             navigate('/sucesso');
             // alert("Deu bom");
         })
@@ -50,10 +50,10 @@ export default function TicketsPage() {
                 const newSelectedSeats = selectedSeats.filter((s) => (s !== seat.name) && (s != seat.name));
                 setSelectedSeats(newSelectedSeats);
                 console.log(newSelectedSeats)
-                const deleteThisIndex = costumerData.findIndex(data => data.id === seat.name);
+                const deleteThisIndex = props.costumerData.findIndex(data => data.id === seat.name);
                 // const result = inventory.find( fruit => fruit.name === 'cherries' );
-                const updatedCustomerData = costumerData.slice(0, deleteThisIndex).concat(costumerData.slice(deleteThisIndex + 1));
-                setCostumerData(updatedCustomerData);
+                const updatedCustomerData = props.costumerData.slice(0, deleteThisIndex).concat(props.costumerData.slice(deleteThisIndex + 1));
+                props.setCostumerData(updatedCustomerData);
                 console.log(updatedCustomerData);
             }
         }
@@ -66,10 +66,10 @@ export default function TicketsPage() {
             // console.log(newSelectedSeats)
             const newCustomer = { nome: "", cpf: "", id: seat.name, realId: seat.id };
             // cria um novo array que inclui o novo objeto
-            const updatedCustomerData = [...costumerData, newCustomer];
+            const updatedCustomerData = [...props.costumerData, newCustomer];
             // define o novo array como o novo estado
-            console.log(updatedCustomerData)
-            setCostumerData(updatedCustomerData);
+            // console.log(updatedCustomerData)
+            props.setCostumerData(updatedCustomerData);
         }
     }
 
@@ -79,9 +79,9 @@ export default function TicketsPage() {
         const promise = axios.get(urlSession);
 
         promise.then(response => {
-            session = response.data;
-            console.log(session);
-            setSession(session);
+            // props.session = response.data;
+            console.log(props.session);
+            props.setSession(response.data);
         });
     }, []);
 
@@ -91,7 +91,7 @@ export default function TicketsPage() {
 
     const urlSession = `https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${sessionId}/seats`;
 
-    if (session.length === 0) {
+    if (props.session.length === 0) {
         return <p>Tickets Page Carregando........</p>;
     }
 
@@ -100,7 +100,7 @@ export default function TicketsPage() {
         // console.log(selectedSeats);
         return (
             <>
-                <BuyerData costumerData={costumerData} setCostumerData={setCostumerData} selectedSeats={selectedSeats} />
+                <BuyerData costumerData={props.costumerData} setCostumerData={props.setCostumerData} selectedSeats={selectedSeats} />
             </>
         );
     }
@@ -108,10 +108,10 @@ export default function TicketsPage() {
     return (
         <ContainerTickets>
             <MainTitleTickets />
-            <Seats session={session} selectedSeats={selectedSeats} selectedSeatsFunction={selectSeat} />
+            <Seats session={props.session} selectedSeats={selectedSeats} selectedSeatsFunction={selectSeat} />
             {selectedSeats.map(dataUserInput)}
             <TicketsButton makePost={makePost} />
-            <FooterTickets session={session} />
+            <FooterTickets session={props.session} />
         </ContainerTickets>
     );
 }

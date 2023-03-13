@@ -1,24 +1,29 @@
 import styled from "styled-components";
 
-export default function Details() {
+export default function Details(props) {
+    // console.log(props.costumerData);
     return (
         <ContainerDetails>
             <MovieDetails>
                 <h1>Filme e sessão</h1>
-                <p>Enola Holmes</p>
-                <p>24/06/2021 15:00</p>
+                <p>{props.session.movie.title}</p>
+                <p>{props.session.day.date} {props.session.name}</p>
             </MovieDetails>
 
             <SeatsDetails>
                 <h1>Ingressos</h1>
-                <p>Assento 15</p>
-                <p>Assento 16</p>
+                {props.costumerData.map((data)=><p>{data.id}</p>)}
             </SeatsDetails>
 
             <BuyerDetails>
                 <h1>Comprador</h1>
-                <p>Nome: João da Silva Sauro</p>
-                <p>CPF: 123.456.789-10</p>
+                {/* <p>Nome: João da Silva Sauro</p>
+                <p>CPF: 123.456.789-10</p> */}
+                {props.costumerData.map((data)=>
+                <ContainerNameAndCpf>
+                <p>Nome: {data.nome}</p><p>CPF: {data.cpf}</p>
+                </ContainerNameAndCpf>)}
+                {/* {props.costumerData.map((data)=><p>CPF: {data.cpf}</p>)} */}
             </BuyerDetails>
         </ContainerDetails>
     );
@@ -28,6 +33,10 @@ const ContainerDetails = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+`;
+
+const ContainerNameAndCpf = styled.div`
+    margin-bottom: 20px;
 `;
 
 const BuyerDetails = styled.div`
