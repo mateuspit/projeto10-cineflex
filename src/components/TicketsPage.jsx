@@ -80,7 +80,7 @@ export default function TicketsPage() {
 
         promise.then(response => {
             session = response.data;
-            // console.log(session);
+            console.log(session);
             setSession(session);
         });
     }, []);

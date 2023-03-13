@@ -44,6 +44,19 @@ const Reset = createGlobalStyle`
         border-collapse: collapse;
         border-spacing: 0;
     }
+    a{
+            color: #FFFFFF;
+            text-decoration: none;
+            &:link, &:visited {
+                color: none;
+                text-decoration: none;
+                cursor: none;
+            }
+
+            &:link:active, &:visited:active {
+                color: none;
+            }
+        }   
 `;
 
 export default Reset;

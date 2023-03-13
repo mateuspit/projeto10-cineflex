@@ -10,10 +10,10 @@ export default function ChooseTimePage(props) {
 
     const params = useParams();
 
-    React.useEffect(() => {
-		// console.log(params.idFilme);
-		// console.log(props.moviesList);
-	}, [props]);
+    // React.useEffect(() => {
+	// 	// console.log(params.idFilme);
+	// 	// console.log(props.moviesList);
+	// }, [props]);
 
     const idMovie = params.idFilme;
     const urlSessions = `https://mock-api.driven.com.br/api/v8/cineflex/movies/${idMovie}/showtimes`;
@@ -27,6 +27,7 @@ export default function ChooseTimePage(props) {
 		promise.then(response => {
             moviesSessions = response.data;
 			setMoviesSessions(moviesSessions);
+            // console.log(moviesSessions)
 		});
 	}, []);
 

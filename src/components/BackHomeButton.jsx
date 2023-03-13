@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export default function BackHomeButton() {
     return (
-        <Button>Voltar pra Home</Button>
+        <Link to={`/`}><Button>Voltar pra Home</Button></Link>
     );
 }
 
